@@ -1,14 +1,11 @@
 package com.holidays_av.com.holidays_av.department;
 
 
-import com.holidays_av.com.holidays_av.Company.Company;
-import com.holidays_av.com.holidays_av.Company.CompanyService;
+import com.holidays_av.com.holidays_av.company.Company;
+import com.holidays_av.com.holidays_av.company.CompanyService;
 import com.holidays_av.com.holidays_av.HolidaysAvApplicationTests;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,12 +1,10 @@
-package com.holidays_av.com.holidays_av.Company;
+package com.holidays_av.com.holidays_av.company;
 
 import com.holidays_av.com.holidays_av.department.Department;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Entity
 @Table(name = "companies")

@@ -1,11 +1,10 @@
-package com.holidays_av.com.holidays_av.Company;
+package com.holidays_av.com.holidays_av.company;
 
 import com.holidays_av.com.holidays_av.department.Department;
 import com.holidays_av.com.holidays_av.department.DepartmentService;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

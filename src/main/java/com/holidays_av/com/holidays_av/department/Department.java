@@ -1,6 +1,6 @@
 package com.holidays_av.com.holidays_av.department;
 
-import com.holidays_av.com.holidays_av.Company.Company;
+import com.holidays_av.com.holidays_av.company.Company;
 
 import javax.persistence.*;
 
