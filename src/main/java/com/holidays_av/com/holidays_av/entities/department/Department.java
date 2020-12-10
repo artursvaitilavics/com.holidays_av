@@ -1,6 +1,6 @@
-package com.holidays_av.com.holidays_av.department;
+package com.holidays_av.com.holidays_av.entities.department;
 
-import com.holidays_av.com.holidays_av.company.Company;
+import com.holidays_av.com.holidays_av.entities.company.Company;
 
 import javax.persistence.*;
 
@@ -33,5 +33,21 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

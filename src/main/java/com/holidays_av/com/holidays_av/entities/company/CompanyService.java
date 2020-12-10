@@ -1,7 +1,7 @@
-package com.holidays_av.com.holidays_av.company;
+package com.holidays_av.com.holidays_av.entities.company;
 
-import com.holidays_av.com.holidays_av.department.Department;
-import com.holidays_av.com.holidays_av.department.DepartmentService;
+import com.holidays_av.com.holidays_av.entities.department.Department;
+import com.holidays_av.com.holidays_av.entities.department.DepartmentService;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,8 +33,12 @@ public class CompanyService {
     }
 
     @Transactional
-    public void addDepartment(Company company, Department department) {
-        companyRepository.findByName(company.getName()).getDepartments().add(department);
+    public void addDepartment(Integer companyId, Integer departmentId) {
+        Company company = companyRepository.getOne(companyId);
+        Department department = departmentService.findById(departmentId);
+        department.setCompany(company);
+        company.getDepartments().add(department);
+
     }
 
     public Company findByName(String name) {

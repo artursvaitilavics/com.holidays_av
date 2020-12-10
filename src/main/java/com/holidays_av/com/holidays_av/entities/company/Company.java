@@ -1,6 +1,6 @@
-package com.holidays_av.com.holidays_av.company;
+package com.holidays_av.com.holidays_av.entities.company;
 
-import com.holidays_av.com.holidays_av.department.Department;
+import com.holidays_av.com.holidays_av.entities.department.Department;
 
 import javax.persistence.*;
 import java.util.ArrayList;

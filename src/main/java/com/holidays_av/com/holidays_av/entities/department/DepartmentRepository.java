@@ -1,4 +1,4 @@
-package com.holidays_av.com.holidays_av.department;
+package com.holidays_av.com.holidays_av.entities.department;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
