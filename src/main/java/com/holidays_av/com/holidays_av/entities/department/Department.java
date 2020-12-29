@@ -1,8 +1,11 @@
 package com.holidays_av.com.holidays_av.entities.department;
 
 import com.holidays_av.com.holidays_av.entities.company.Company;
+import com.holidays_av.com.holidays_av.entities.employee.Employee;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -19,6 +22,11 @@ public class Department {
     @JoinColumn(name = "company_id", nullable = true, referencedColumnName = "id")
     private Company company;
 
+    @OneToMany(targetEntity = Employee.class,
+            mappedBy = "department",
+            cascade = CascadeType.MERGE,
+            fetch = FetchType.EAGER)
+    private List<Employee> employees = new ArrayList<>();
 
     public Department() {
     }

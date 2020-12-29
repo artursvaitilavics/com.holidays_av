@@ -28,8 +28,8 @@ public class CompanyService {
         return companyRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    public Optional<Company> findById(Integer id) {
-        return companyRepository.findById(id);
+    public Company findById(Integer id) {
+        return companyRepository.getOne(id);
     }
 
     @Transactional
@@ -45,7 +45,7 @@ public class CompanyService {
         return companyRepository.findByName(name);
     }
 
-    public List<Department> departments(Company company){
+    public List<Department> departments(Company company) {
         return company.getDepartments();
     }
 

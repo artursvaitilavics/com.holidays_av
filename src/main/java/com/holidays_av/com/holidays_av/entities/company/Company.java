@@ -1,6 +1,9 @@
 package com.holidays_av.com.holidays_av.entities.company;
 
 import com.holidays_av.com.holidays_av.entities.department.Department;
+import com.holidays_av.com.holidays_av.entities.employee.Employee;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,14 +23,29 @@ public class Company {
             mappedBy = "company",
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-//    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Department> departments = new ArrayList<>();
+
+    @OneToMany(targetEntity = Employee.class,
+            mappedBy = "company",
+            cascade = CascadeType.MERGE
+            , fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Employee> employees = new ArrayList<>();
 
     public Company() {
     }
 
     public Company(String name) {
         this.name = name;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public Integer getCompany_id() {
@@ -52,5 +70,13 @@ public class Company {
 
     public void addDepartment(Department department) {
         this.departments.add(department);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

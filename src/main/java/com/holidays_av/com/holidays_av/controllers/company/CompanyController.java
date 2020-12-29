@@ -5,11 +5,12 @@ import com.holidays_av.com.holidays_av.entities.company.CompanyRepository;
 import com.holidays_av.com.holidays_av.entities.company.CompanyService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/company")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 
 public class CompanyController {
     private final CompanyService companyService;
@@ -23,8 +24,20 @@ public class CompanyController {
     }
 
     @GetMapping()
-    public List<Company> getCompanies() {
-        return companyService.getAllCompanies();
+    public List<CompanyDto> getCompanies() {
+        List<CompanyDto> companyDtoList = new ArrayList<>();
+        companyService.getAllCompanies().forEach(company -> {
+            CompanyDto companyDto = new CompanyDto();
+            List<String> departmentNames = new ArrayList<String>();
+            companyDto.setId(company.getId());
+            companyDto.setName(company.getName());
+            company.getDepartments().forEach(department -> {
+                departmentNames.add(department.getName());
+            });
+            companyDto.setDepartments(departmentNames);
+            companyDtoList.add(companyDto);
+        });
+        return companyDtoList;
     }
 
     @PostMapping()

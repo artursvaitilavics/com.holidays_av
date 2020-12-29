@@ -1,6 +1,2 @@
-1. DepartmentDto 
-2. CompanyDto
-
-3. Mapping from Dto to Class, possibly in controllers.
-4. Chrome and Angular shouldn't crash, when company is added to department.
-    DB is working just fine.
+1. companies and departments are displayed correctly and Request mapping is pretty cool!
+2. Make controllers to work for Employees!

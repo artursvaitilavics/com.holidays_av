@@ -6,7 +6,9 @@ import com.holidays_av.com.holidays_av.entities.department.Department;
 import com.holidays_av.com.holidays_av.entities.department.DepartmentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/departments")
@@ -22,9 +24,22 @@ public class DepartmentController {
     //    TODO: Create DTO Class for Company
 
 
+//    @GetMapping()
+//    public List<Department> getAllDepartments() {
+//        return departmentService.getAllDepartments();
+//    }
+
     @GetMapping()
-    public List<Department> getAllDepartments() {
-        return departmentService.getAllDepartments();
+    public List<DepartmentDto> getAllDepartments() {
+        List<DepartmentDto> departmentDtoList = new ArrayList<>();
+        departmentService.getAllDepartments().forEach(e -> {
+            DepartmentDto departmentDto = new DepartmentDto();
+            departmentDto.setId(e.getId());
+            departmentDto.setName(e.getName());
+            departmentDto.setCompanyName(e.getCompany().getName());
+            departmentDtoList.add(departmentDto);
+        });
+        return departmentDtoList;
     }
 
     @PostMapping()
@@ -33,7 +48,7 @@ public class DepartmentController {
     }
 
     @PatchMapping()
-    public void addToCompany(@RequestBody CompanyToDepartmentBd companyToDepartmentBd){
+    public void addToCompany(@RequestBody CompanyToDepartmentBd companyToDepartmentBd) {
         departmentService.addToCompany(companyToDepartmentBd.getCompanyId(), companyToDepartmentBd.getDepartmentId());
     }
 
