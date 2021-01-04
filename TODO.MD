@@ -1,2 +1,2 @@
-1. companies and departments are displayed correctly and Request mapping is pretty cool!
-2. Make controllers to work for Employees!
+1. Employee Controller crashes request app once new employee have been added.
+    It does create entry in MySql DB.

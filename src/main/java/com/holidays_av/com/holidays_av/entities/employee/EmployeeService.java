@@ -32,6 +32,13 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    @Transactional
+    public Employee addDepartment(String name, Integer departmentId) {
+        Employee employee = employeeRepository.findByName(name);
+        employee.setDepartment(departmentService.findById(departmentId));
+        return employee;
+    }
+
     public Employee findByName(String name) {
         return employeeRepository.findByName(name);
     }
