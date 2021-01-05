@@ -47,7 +47,7 @@ public class DepartmentController {
         return departmentService.saveDepartment(department);
     }
 
-    @PatchMapping()
+    @PatchMapping()  //Maybe this is put mapping
     public void addToCompany(@RequestBody CompanyToDepartmentBd companyToDepartmentBd) {
         departmentService.addToCompany(companyToDepartmentBd.getCompanyId(), companyToDepartmentBd.getDepartmentId());
     }

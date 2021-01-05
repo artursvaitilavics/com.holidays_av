@@ -6,6 +6,7 @@ import com.holidays_av.com.holidays_av.entities.employee.EmployeeService;
 import com.holidays_av.com.holidays_av.entities.employee.Employee;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,18 +24,50 @@ public class EmployeeController {
         this.departmentService = departmentService;
     }
 
+//    @PostMapping()
+//    public Employee addEmployee(@RequestBody EmployeeDto employeeDto) {
+//        return employeeService.createEmployee(
+//                employeeDto.getName(),
+//                employeeDto.getLastName(),
+//                companyService.findByName(employeeDto.getCompanyName()).getId(),
+//                departmentService.findByName(employeeDto.getDepartmentName()).getId()
+//        );
+//    }
+
     @PostMapping()
-    public Employee addEmployee(@RequestBody EmployeeDto employeeDto) {
-        return employeeService.createEmployee(employeeDto.getName(),
-                employeeDto.getLastName(),
-                companyService.findByName(employeeDto.getCompanyName()).getId(),
-                departmentService.findByName(employeeDto.getDepartmentName()).getId()
-        );
+    public Employee addEmployee(@RequestBody Employee employee) {
+        return employeeService.saveEmployee(employee);
     }
 
+
+//    @GetMapping()
+//    public List<Employee> getAllEmployees() {
+//        return employeeService.getAllEmployees();
+//    }
+
     @GetMapping()
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    public List<EmployeeDto> getAllEmployees() {
+        List<EmployeeDto> employeeDtoList = new ArrayList<>();
+        employeeService.getAllEmployees().forEach(employee -> {
+            EmployeeDto employeeDto = new EmployeeDto();
+            employeeDto.setId(employee.getId());
+            employeeDto.setName(employee.getName());
+            employeeDto.setLastName(employee.getLastName());
+
+
+//            TODO: fix below try catch block, looks ridiculous
+            try {
+                employeeDto.setCompanyName(employee.getCompany().getName());
+                employeeDto.setDepartmentName(employee.getDepartment().getName());
+            } catch (Exception ex) {
+                employeeDto.setCompanyName("Not Set");
+                employeeDto.setDepartmentName("Not Set");
+            }
+
+
+            employeeDtoList.add(employeeDto);
+        });
+        return employeeDtoList;
     }
 
 
