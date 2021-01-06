@@ -1,1 +1,1 @@
-2. Get EmployeesController to set company and department for Employee
+2. EmployeeController crashing if trying to add company, because it returns null in department's field - fixit

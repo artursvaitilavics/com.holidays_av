@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employees")
@@ -68,6 +69,13 @@ public class EmployeeController {
             employeeDtoList.add(employeeDto);
         });
         return employeeDtoList;
+    }
+
+    @PatchMapping
+    public Employee setCompany(@RequestBody EmployeeCompanyDto employeeCompanyDto){
+        Employee employee = employeeService.addCompany(employeeCompanyDto.getId(), employeeCompanyDto.getCompanyId());
+        employee.setCompany(companyService.findById(employeeCompanyDto.getCompanyId()));
+        return employee;
     }
 
 

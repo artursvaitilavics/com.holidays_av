@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class EmployeeService {
@@ -39,11 +40,25 @@ public class EmployeeService {
         return employee;
     }
 
+    @Transactional
+    public Employee addCompany(Integer id, Integer companyId){
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+        Employee employee = optionalEmployee.orElseGet(() -> {
+            return new Employee();
+        });
+        employee.setCompany(companyService.findById(companyId));
+        return employee;
+    }
+
     public Employee findByName(String name) {
         return employeeRepository.findByName(name);
     }
 
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
+    }
+
+    public Optional<Employee> findById(Integer id){
+        return employeeRepository.findById(id);
     }
 }
