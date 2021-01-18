@@ -1,4 +1,4 @@
-package com.holidays_av.com.holidays_av;
+package com.holidays_av;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
