@@ -2,7 +2,7 @@ package com.holidays_av.controller;
 
 import com.holidays_av.dto.EmployeeDto;
 import com.holidays_av.mapper.EmployeeMapper;
-import com.holidays_av.model.employee.Employee;
+import com.holidays_av.model.Employee;
 import com.holidays_av.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

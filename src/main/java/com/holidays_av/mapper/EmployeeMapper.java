@@ -1,8 +1,8 @@
 package com.holidays_av.mapper;
 
 import com.holidays_av.dto.EmployeeDto;
-import com.holidays_av.model.employee.Employee;
-import com.holidays_av.model.employee.status.EmployeeStatus;
+import com.holidays_av.model.Employee;
+import com.holidays_av.model.status.EmployeeStatus;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package com.holidays_av.model.employee.status;
+package com.holidays_av.model.status;
 
 public enum EmployeeStatus {
     ADMIN,

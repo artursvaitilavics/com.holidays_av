@@ -1,6 +1,6 @@
 package com.holidays_av.handler;
 
-import com.holidays_av.dto.ErrorResponse;
+import com.holidays_av.exception.ErrorResponse;
 import com.holidays_av.exception.ExceptionService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.MethodArgumentNotValidException;

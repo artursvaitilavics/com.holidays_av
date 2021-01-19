@@ -1,4 +1,4 @@
-package com.holidays_av.dto;
+package com.holidays_av.exception;
 
 public class ErrorResponse {
     private String message;

@@ -1,20 +1,12 @@
-package com.holidays_av.model.employee;
+package com.holidays_av.model;
 
-import com.holidays_av.model.employee.status.EmployeeStatus;
+import com.holidays_av.model.status.EmployeeStatus;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "name")
-    private String name;
+public class Employee extends BasicModel {
 
     @Column(name = "last_name")
     private String lastName;
@@ -25,22 +17,6 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private EmployeeStatus status;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getLastName() {
         return lastName;

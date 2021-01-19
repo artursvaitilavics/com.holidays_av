@@ -1,6 +1,6 @@
 package com.holidays_av.repository;
 
-import com.holidays_av.model.employee.Employee;
+import com.holidays_av.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

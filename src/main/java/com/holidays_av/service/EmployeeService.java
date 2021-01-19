@@ -2,8 +2,8 @@ package com.holidays_av.service;
 
 import com.holidays_av.exception.ExceptionService;
 import com.holidays_av.exception.utils.ExceptionCode;
-import com.holidays_av.model.employee.Employee;
-import com.holidays_av.model.employee.status.EmployeeStatus;
+import com.holidays_av.model.Employee;
+import com.holidays_av.model.status.EmployeeStatus;
 import com.holidays_av.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
