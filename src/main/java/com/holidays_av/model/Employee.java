@@ -18,6 +18,9 @@ public class Employee extends BasicModel {
     @Column(name = "status")
     private EmployeeStatus status;
 
+    @ManyToOne
+    private Company company;
+
     public String getLastName() {
         return lastName;
     }
@@ -41,4 +44,14 @@ public class Employee extends BasicModel {
     public void setStatus(EmployeeStatus status) {
         this.status = status;
     }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CompanyMapper {
-    private CompanyDto toDto(Company company) {
+    public CompanyDto toDto(Company company) {
         CompanyDto companyDto = new CompanyDto();
         companyDto.setId(company.getId());
         companyDto.setName(company.getName());
@@ -16,7 +16,7 @@ public class CompanyMapper {
         return companyDto;
     }
 
-    private Company fromDto(CompanyDto companyDto) {
+    public Company fromDto(CompanyDto companyDto) {
         Company company = new Company();
         company.setName(companyDto.getName());
         company.setStatus(CompanyStatus.valueOf(companyDto.getStatus()));
