@@ -23,6 +23,7 @@ public class EmployeeService {
     public Employee save(Employee employee) {
 
         employee.setStatus(EmployeeStatus.EMPLOYEE);
+        employee.setDayLeft(25);
         return employeeRepository.save(employee);
     }
 
