@@ -1,8 +1,11 @@
 package com.holidays_av.service;
 
+import com.holidays_av.model.Employee;
+import com.holidays_av.model.Holiday;
+import com.holidays_av.service.utils.CountDays;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Service
 public class EmployeeHolidayService {
@@ -15,21 +18,22 @@ public class EmployeeHolidayService {
         this.holidayService = holidayService;
     }
 
-    public Integer saveHoliday(Integer employeeId, Date startTime, Date endTime) {
-//        Calendar calendarStartDate = Calendar.getInstance();
-//        calendarStartDate.setTime(startTime);
-//
-//        Calendar calendarEndDate = Calendar.getInstance();
-//        calendarEndDate.setTime(endTime);
-//
-//        Integer workDays = 0;
-//
-//        if(calendarStartDate.getTimeInMillis() == calendarEndDate.getTimeInMillis()){
-//            return 0;
-//        }
-//        if (calendarStartDate.getTimeInMillis() > calendarEndDate.getTimeInMillis()){
-//
-//        }
-        return 2;
+    public Integer saveHoliday(Long employeeId, LocalDate startTime, LocalDate endTime) {
+        Employee employee = employeeService.findById(employeeId);
+
+        CountDays countDays = new CountDays();
+        Integer days = countDays.days(startTime, endTime);
+
+        employee.setDayLeft(employee.getDayLeft() - days);
+
+        Holiday holiday = new Holiday();
+        holiday.setStartDate(startTime);
+        holiday.setEndDate(endTime);
+
+        Holiday savedHoliday = holidayService.save(holiday);
+
+        employee.getHoliday().add(savedHoliday);
+        employeeService.save(employee);
+        return days;
     }
 }
