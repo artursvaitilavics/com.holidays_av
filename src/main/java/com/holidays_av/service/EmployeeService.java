@@ -61,4 +61,8 @@ public class EmployeeService {
         employeeRepository.save(employee);
         return employee;
     }
+
+    public Employee update(Employee employee) {
+        return employeeRepository.save(employee);
+    }
 }
