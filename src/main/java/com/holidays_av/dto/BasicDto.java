@@ -2,14 +2,12 @@ package com.holidays_av.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.validation.constraints.NotEmpty;
-
 public class BasicDto {
 
     @JsonProperty("id")
     private Long id;
 
-    @NotEmpty(message = "Please check name....")
+//    @NotEmpty(message = "Please check name....")
     @JsonProperty("name")
     private String name;
 

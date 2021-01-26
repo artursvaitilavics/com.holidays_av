@@ -16,26 +16,28 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public void configureGlobal(
-            AuthenticationManagerBuilder authenticatorBuilder) throws Exception {
-         authenticatorBuilder.inMemoryAuthentication()
-        .withUser("user1").password(passwordEncoder().encode("user1Pass"))
-        .authorities("ROLE_USER");
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("admin").password(passwordEncoder().encode("adminPass"))
+                .roles("ADMIN");
+        auth.inMemoryAuthentication()
+                .withUser("employee").password(passwordEncoder().encode("empPass"))
+                .roles("EMPLOYEE");
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/rest/api/Employee.svc").permitAll()
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/rest/api/Company.svc/**").hasRole("ADMIN")
+                .antMatchers("/rest/api/Employee.svc").hasRole(("EMPLOYEE"))
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();
-//                .authenticationEntryPoint(authenticationEntryPoint);
-
-//          TODO: See what bellow code is for
-//        http.addFilterAfter(new CustomFilter(),
-//                BasicAuthenticationFilter.class);
+                .formLogin();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -44,3 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 }
+
+
+
+//          http://localhost:8080/rest/api/Company.svc/test

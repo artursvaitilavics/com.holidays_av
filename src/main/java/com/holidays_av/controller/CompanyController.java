@@ -6,6 +6,7 @@ import com.holidays_av.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +26,20 @@ public class CompanyController {
         this.companyMapper = companyMapper;
     }
 
-    @PostMapping("/company")
+    @RolesAllowed("ADMIN")
+    @GetMapping("/test")
+    public String getTest() {
+        return "test";
+    }
+
+    @RolesAllowed("ADMIN")
+    @RequestMapping(value = "/test({name})", produces = "application/json", method = {RequestMethod.POST})
+    public String setTest(@PathVariable("name") String name) {
+        return "test " + name;
+    }
+
+    @RolesAllowed("ADMIN")
+    @RequestMapping(value = "/companySave", produces = "application/json", method = {RequestMethod.POST})
     public CompanyDto save(@RequestBody CompanyDto companyDto) {
         return companyMapper
                 .toDto(companyService
