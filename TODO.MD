@@ -1,15 +1,18 @@
-1. Security Logins for admints, who add companies
-2. Security login for managers, who when log in, can add
-    employees to currently logged in company
-3. Security - for users, once logged in, they can make holiday requests
+1. Dto for assigning company to Employee
+2. Check if there is method for assigning comp to employee in any controller
+3. Validators need interface
+4. TEST:
+    1. Mappers
+    2. All services and utils
+    3. Validators
+    
 
-BIG TODOS:
-1. Adjust existing holiday, if startDate or endDate changes. 
 
 
+5. Ask about h2 not working with spring security
 
 
-Security, how should it work:
-
-open page, we see only register company. once you register company, you are in this company's webpage, and adding
-new employee would automaticly set it's company the current open.
+Optional
+ Validator, to check how many people are on holiday
+    return false, if more than 25% with the same company are on holiday
+    

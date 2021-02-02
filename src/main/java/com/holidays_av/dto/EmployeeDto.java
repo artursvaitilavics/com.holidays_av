@@ -15,16 +15,16 @@ public class EmployeeDto extends BasicDto {
     @JsonProperty("email")
     private String email;
 
-    @JsonProperty("companyId")
-    private Long companyId;
+//    @JsonProperty("companyId")
+//    private Long companyId;
 
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
+//    public Long getCompanyId() {
+//        return companyId;
+//    }
+//
+//    public void setCompanyId(Long companyId) {
+//        this.companyId = companyId;
+//    }
 
     public String getLastName() {
         return lastName;

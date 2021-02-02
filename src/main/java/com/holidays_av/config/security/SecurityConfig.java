@@ -13,12 +13,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+//public class SecurityConfig{}
+
+public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
+
         auth.inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("adminPass"))
+                .withUser("admin")
+                .password(passwordEncoder().encode("adminPass"))
                 .roles("ADMIN");
         auth.inMemoryAuthentication()
                 .withUser("employee").password(passwordEncoder().encode("empPass"))
@@ -32,10 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/rest/api/Company.svc/**").hasRole("ADMIN")
-                .antMatchers("/rest/api/Employee.svc").hasRole(("EMPLOYEE"))
+                .antMatchers("/rest/api/CurrentCompany.svc/**").hasAnyRole("ADMIN")
+                .antMatchers("/rest/api/EmployeeHoliday.svc/**").hasAnyRole("ADMIN",  "EMPLOYEE")
+                .antMatchers("/rest/api/Employee.svc/**").hasAnyRole("EMPLOYEE", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin();
+
     }
 
 
@@ -49,4 +58,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-//          http://localhost:8080/rest/api/Company.svc/test

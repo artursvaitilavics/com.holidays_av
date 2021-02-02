@@ -11,7 +11,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.3.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <properties>
         <java.version>1.8</java.version>
@@ -40,7 +40,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.threeten/threeten-extra -->
         <dependency>
             <groupId>org.threeten</groupId>
             <artifactId>threeten-extra</artifactId>
@@ -63,37 +62,27 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+<!--            <scope>runtime</scope>-->
             <version>1.4.199</version>
         </dependency>
 
-        <!-- SECURITY
-        https://www.baeldung.com/spring-security-5-oauth2-login
-        https://developers.google.com/identity/protocols/oauth2
-        https://console.developers.google.com/apis
-        -->
-        <!--
-        <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-oauth2-client</artifactId>
-        <version>2.3.3.RELEASE</version>
-    </dependency>
-        -->
+
 
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.4</version>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.mockito</groupId>-->
+<!--            <artifactId>mockito-all</artifactId>-->
+<!--            <version>1.10.19</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
 
         <dependency>
@@ -108,22 +97,15 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             </exclusions>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.mockito</groupId>-->
+<!--            <artifactId>mockito-all</artifactId>-->
+<!--            <version>1.10.19</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
 
     </dependencies>
