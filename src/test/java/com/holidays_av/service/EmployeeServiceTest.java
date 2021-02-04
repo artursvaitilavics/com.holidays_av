@@ -23,11 +23,11 @@ public class EmployeeServiceTest {
     public void save() {
         Employee employee = createEmployee(1L, "Bilbo", "Baggins");
         Mockito.when(employeeRepository.save(employee)).thenReturn(employee);
-        Employee savedEmployee = employeeService.save(employee);
-        assertEquals(1L, longValue(savedEmployee.getId()));
-        assertEquals("Bilbo", savedEmployee.getName());
-        assertEquals("Baggins", savedEmployee.getLastName());
-        assertEquals("Bilbo.Baggins@middle-earth.com", savedEmployee.getEmail());
+        Employee result = employeeService.save(employee);
+        assertEquals(1L, longValue(result.getId()));
+        assertEquals("Bilbo", result.getName());
+        assertEquals("Baggins", result.getLastName());
+        assertEquals("Bilbo.Baggins@middle-earth.com", result.getEmail());
 
 
     }
@@ -37,27 +37,26 @@ public class EmployeeServiceTest {
 
         Employee employee001 = (createEmployee(1L, "Bilbo", "Baggins"));
         Employee employee002 = (createEmployee(2L, "Frodo", "Baggins"));
-        Employee employee003 = (createEmployee(3L, "Pippin", "Took"));
-        Employee employee004 = (createEmployee(4L, "Meriadoc", "Brandybuck"));
+
 
         Mockito.when(employeeRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(employee001));
 
-        Employee employeeByID0001 = employeeService.findById(1L);
+        Employee result01 = employeeService.findById(1L);
 
 
-        assertEquals(1L, longValue(employeeByID0001.getId()));
-        assertEquals("Bilbo", employeeByID0001.getName());
-        assertEquals("Baggins", employeeByID0001.getLastName());
-        assertEquals("Bilbo.Baggins@middle-earth.com", employeeByID0001.getEmail());
+        assertEquals(1L, longValue(result01.getId()));
+        assertEquals("Bilbo", result01.getName());
+        assertEquals("Baggins", result01.getLastName());
+        assertEquals("Bilbo.Baggins@middle-earth.com", result01.getEmail());
 
         Mockito.when(employeeRepository.findById(2L)).thenReturn(java.util.Optional.ofNullable(employee002));
 
-        Employee employeeByID0002 = employeeService.findById(2L);
+        Employee resulut02 = employeeService.findById(2L);
 
-        assertEquals(2L, longValue(employeeByID0002.getId()));
-        assertEquals("Frodo", employeeByID0002.getName());
-        assertEquals("Baggins", employeeByID0002.getLastName());
-        assertEquals("Frodo.Baggins@middle-earth.com", employeeByID0002.getEmail());
+        assertEquals(2L, longValue(resulut02.getId()));
+        assertEquals("Frodo", resulut02.getName());
+        assertEquals("Baggins", resulut02.getLastName());
+        assertEquals("Frodo.Baggins@middle-earth.com", resulut02.getEmail());
 
     }
 
@@ -121,10 +120,10 @@ public class EmployeeServiceTest {
 
         Mockito.when(employeeRepository.save(employeeUpdateData)).thenReturn(employeeUpdateData);
 
-        Employee updatedEmployee = employeeService.update(employeeUpdateData, 1L);
+        Employee result = employeeService.update(employeeUpdateData, 1L);
 
-        assertEquals(1L, longValue(updatedEmployee.getId()));
-        assertEquals("Frodo", updatedEmployee.getName());
+        assertEquals(1L, longValue(result.getId()));
+        assertEquals("Frodo", result.getName());
     }
 
     @Test
@@ -136,12 +135,12 @@ public class EmployeeServiceTest {
 
         Mockito.when(employeeRepository.save(employee)).thenReturn(employee);
 
-        Employee deletedEmployee = employeeService.delete(1L);
+        Employee result = employeeService.delete(1L);
 
-        assertEquals("Bilbo", deletedEmployee.getName());
-        assertEquals("Baggins", deletedEmployee.getLastName());
+        assertEquals("Bilbo", result.getName());
+        assertEquals("Baggins", result.getLastName());
 
-        assertEquals(EmployeeStatus.EX_EMPLOYEE, deletedEmployee.getStatus());
+        assertEquals(EmployeeStatus.EX_EMPLOYEE, result.getStatus());
 
     }
 

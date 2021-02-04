@@ -1,16 +1,7 @@
-1. Dto for assigning company to Employee
-2. Check if there is method for assigning comp to employee in any controller
-3. Validators need interface
-4. TEST:
-    1. Mappers
-    2. All services and utils
-    3. Validators
-    
-
-
-
-5. Ask about h2 not working with spring security
-
+IMPORTANT:
+    Get national holidays for at least one country from some trusted online API
+    use it to count days left. so if request falls within national
+    holiday, we don't count that as taken holiday. 
 
 Optional
  Validator, to check how many people are on holiday
