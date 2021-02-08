@@ -7,6 +7,8 @@ import com.holidays_av.validator.HolidayValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 
 @Service
@@ -25,7 +27,7 @@ public class EmployeeHolidayService {
         this.holidayValidator = holidayValidator;
     }
 
-    public Integer saveHoliday(Long employeeId, LocalDate startTime, LocalDate endTime) {
+    public Integer saveHoliday(Long employeeId, LocalDate startTime, LocalDate endTime) throws IOException, URISyntaxException {
         if(holidayValidator.isValid(employeeId, startTime, endTime)){
 
 
