@@ -13,13 +13,10 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/rest/api/Employee.svc")
-//@CrossOrigin(value="http://localhost:4200/register")
 @CrossOrigin("*")
 public class EmployeeController {
     private final EmployeeService employeeService;
     private final EmployeeMapper employeeMapper;
-
-    public EmployeeDto employeeDto = new EmployeeDto();
 
     @Autowired
     public EmployeeController(EmployeeService employeeService,

@@ -1,5 +1,6 @@
-package com.holidays_av.web_api;
+package com.holidays_av.api;
 
+import com.holidays_av.api.web.NationalHolidayApi;
 import org.junit.Test;
 
 import java.io.IOException;

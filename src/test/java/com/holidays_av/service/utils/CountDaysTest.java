@@ -1,5 +1,6 @@
 package com.holidays_av.service.utils;
 
+import com.holidays_av.api.web.NationalHolidayApi;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,9 +12,11 @@ import static org.junit.Assert.assertEquals;
 
 public class CountDaysTest {
 
+    NationalHolidayApi nationalHolidayApi = new NationalHolidayApi();
+
     @Test
     public void days() throws IOException, URISyntaxException {
-        CountDays countDays = new CountDays();
+        CountDays countDays = new CountDays(nationalHolidayApi);
         LocalDate startDate001 = LocalDate.of(2021, Month.MAY, 4);
         LocalDate endDate001 = LocalDate.of(2021, Month.MAY, 15);
 

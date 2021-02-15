@@ -1,6 +1,8 @@
 package com.holidays_av.service.utils;
 
-import com.holidays_av.web_api.NationalHolidayApi;
+import com.holidays_av.api.web.NationalHolidayApi;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.threeten.extra.Temporals;
 
 import java.io.IOException;
@@ -8,8 +10,16 @@ import java.net.URISyntaxException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
+@Component
 public class CountDays {
-    private NationalHolidayApi nationalHolidayApi = new NationalHolidayApi();
+
+
+    private final NationalHolidayApi nationalHolidayApi;
+
+    @Autowired
+    public CountDays(NationalHolidayApi nationalHolidayApi) {
+        this.nationalHolidayApi = nationalHolidayApi;
+    }
 
 
     public Integer days(LocalDate startDate, LocalDate endDate) throws IOException, URISyntaxException {

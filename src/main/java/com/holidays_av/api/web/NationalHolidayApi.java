@@ -1,7 +1,9 @@
-package com.holidays_av.web_api;
+package com.holidays_av.api.web;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
@@ -11,9 +13,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
+@Component
 public class NationalHolidayApi {
 
-//TODO: this is not good solution, as its very slow. need to rethink
+    @Autowired
+    private ObjectMapper objectMapper;
+
+
+    //TODO: this is not good solution, as its very slow. need to rethink
     public boolean isNationalHoliday(LocalDate date) throws IOException, URISyntaxException {
 
         String stringDate = convertLocalDateToString(date);
@@ -21,9 +28,7 @@ public class NationalHolidayApi {
         URI uri = new URI(link);
         URL url = uri.toURL();
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        Map<String, Object> map = mapper.readValue(url, Map.class);
+        Map<String, Object> map = objectMapper.readValue(url, Map.class);
         return (boolean) map.get("isPublicHoliday");
 
     }

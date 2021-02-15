@@ -7,13 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeMapper {
-//
-//    private final CompanyService companyService;
-//
-//    public EmployeeMapper(CompanyService companyService) {
-//        this.companyService = companyService;
-//    }
-
 
     public EmployeeDto toDto(Employee employee) {
         EmployeeDto employeeDto = new EmployeeDto();
@@ -22,7 +15,6 @@ public class EmployeeMapper {
         employeeDto.setLastName(employee.getLastName());
         employeeDto.setEmail(employee.getEmail());
         employeeDto.setStatus(employee.getStatus().name());
-//        employeeDto.setCompanyId(employee.getCompany().getId());
         return employeeDto;
     }
 
@@ -32,7 +24,6 @@ public class EmployeeMapper {
         employee.setLastName(employeeDto.getLastName());
         employee.setEmail(employeeDto.getEmail());
         employee.setStatus(EmployeeStatus.valueOf(employeeDto.getStatus()));
-//        employee.setCompany(companyService.findById(employeeDto.getCompanyId())); // I have a bad feeling about this
         return employee;
     }
 }
