@@ -1,0 +1,9 @@
+holidays_av
+
+This project will be a platform that can be used by different
+companies to track their employees holidays.
+For Back End I am using Java Spring and MySql DB.
+For the development stage I use H2 in memory database.Front End React JS.
+
+At this point Back End is at its early stage and the front end has just started.
+From this point onwards Back-End and Front-End will progress in tandem.
