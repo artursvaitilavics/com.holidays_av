@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("/rest/api/EmployeeHoliday.svc")
+@CrossOrigin("*")
 public class EmployeeHolidayController {
 
     private final EmployeeHolidayService employeeHolidayService;

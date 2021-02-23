@@ -3,6 +3,7 @@ package com.holidays_av.service;
 import com.holidays_av.model.Employee;
 import com.holidays_av.model.status.EmployeeStatus;
 import com.holidays_av.repository.EmployeeRepository;
+import com.holidays_av.validator.EmployeeValidator;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -16,7 +17,8 @@ public class EmployeeServiceTest {
 
     public EmployeeRepository employeeRepository = Mockito.mock(EmployeeRepository.class);
 
-    public EmployeeService employeeService = new EmployeeService(employeeRepository);
+    private EmployeeValidator employeeValidator;
+    public EmployeeService employeeService = new EmployeeService(employeeRepository, employeeValidator);
 
 
     @Test

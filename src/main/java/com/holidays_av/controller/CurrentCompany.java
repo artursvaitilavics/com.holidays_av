@@ -3,16 +3,14 @@ package com.holidays_av.controller;
 import com.holidays_av.dto.EmployeeDto;
 import com.holidays_av.mapper.EmployeeMapper;
 import com.holidays_av.service.CompanyEmployeesService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/rest/api/CurrentCompany.svc")
+@CrossOrigin("*")
 public class CurrentCompany {
 
     private final CompanyEmployeesService companyEmployeesService;

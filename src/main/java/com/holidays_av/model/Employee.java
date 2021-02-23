@@ -22,7 +22,7 @@ public class Employee extends BasicModel {
     @ManyToOne
     private Company company;
 
-    @OneToMany(mappedBy = "employee")//faren key in holday table
+    @OneToMany(mappedBy = "employee")//faren key in holiday table
     private List<Holiday> holiday;
 
     @Column(name = "days_left")

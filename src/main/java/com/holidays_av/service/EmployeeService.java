@@ -5,19 +5,23 @@ import com.holidays_av.exception.utils.ExceptionCode;
 import com.holidays_av.model.Employee;
 import com.holidays_av.model.status.EmployeeStatus;
 import com.holidays_av.repository.EmployeeRepository;
+import com.holidays_av.validator.EmployeeValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
+    private final EmployeeValidator employeeValidator;
 
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository, EmployeeValidator employeeValidator) {
         this.employeeRepository = employeeRepository;
+        this.employeeValidator = employeeValidator;
     }
 
     public Employee save(Employee employee) {
@@ -38,7 +42,15 @@ public class EmployeeService {
     }
 
     public List<Employee> findAll() {
-        return employeeRepository.findAll();
+        List<Employee> employees = new ArrayList<Employee>();
+        employeeRepository.findAll().forEach(employee -> {
+            if(employeeValidator.isEmployee(employee)){
+                employees.add(employee);
+            }
+        });
+
+        return employees;
+
     }
 
     public Employee update(Employee employee, Long id) {
